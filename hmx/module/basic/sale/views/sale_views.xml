@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <menuitem id="menu_sale_root" name="Sales" web_icon="icon-sales" sequence="0" category="base.category_sales"/>
+    <menuitem id="menu_sale_sub" name="Orders" parent="menu_sale_root" sequence="1"/>
+
+
+    <record id="view_sale_list" model="baseuiview">
+        <field name="name">view.sale.list</field>
+        <field name="model">sale</field>
+        <field name="arch" type="xml">
+            <list string="sale">
+                <field name="name" />
+                <field name="partner_id"/>
+                <field name="quantity"/>
+                <field name="price"/>
+                <field name="subtotal"/>
+                <field name="restricted_field"/>
+                <field name="status"
+                   widget="badge"
+                   optional="hide"
+                   options="{
+                       'class_field': 'status',
+                   }"/>
+                <field name="company" optional="hide"/>
+
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sale_form" model="baseuiview">
+        <field name="name">view.sale.form</field>
+        <field name="model">sale</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form class="hmx_form_sale" create="true" edit="true" delete="true" string="sale" attrs="{'readonly': [('status', 'in', ('approved', 'rejected'))]}">
+                    <header>
+                        <!-- Approval buttons are auto-injected by hx-approval-buttons-auto component -->
+                        <!-- based on ApprovalMixin configuration -->
+
+                        <!-- Test buttons -->
+                        <button name="action_dummy" string="Dummy" type="object" class="btn btn-primary"/>
+                        <button name="action_unlink" string="Unlink" type="object" class="btn btn-primary"/>
+                        <button name="action_generate_1m_records" string="Generate 1M Data" type="object" class="btn btn-primary"/>
+                        <button name="action_generate_sample_data" string="Generate Sample Data" type="object" class="btn btn-primary"/>
+                        <button name="some_heavy_method" string="Heavy Method" type="object" class="btn btn-primary"/>
+                        <button name="action_excel_data" string="Excel Report" type="object" class="btn btn-primary"/>
+                        <button name="action_excel_template" string="Excel Report Template" type="object" class="btn btn-primary"/>
+                        <button name="action_sum" string="Sum (Python)" type="object" class="btn btn-primary"/>
+                        <button name="action_sum_cy" string="Sum (Cython)" type="object" class="btn btn-primary"/>
+
+                        <!-- Status bar -->
+                        <field name="status" widget="statusbar" statusbar_visible="draft,waiting_approval,approved,rejected"/>
+                    </header>
+                    <sheet>
+                        <div class="hmx_title" layout="vertical">
+                            <group>
+                                <group>
+                                    <field name="name" widget="heading" level="h1"
+                                        placeholder="Name (company or person)" readonly="1"
+                                        />
+                                </group>
+                                <group>
+                                    <field name="company" />
+                                </group>
+                            </group>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="quantity" />
+                                <field name="restricted_field"/>
+                            </group>
+                            <group>
+                                <field name="price"  options="{'thousand_separator': ',', 'thousand_separator_size': '4', 'decimal_separator': '.', 'decimal_places': '3'}"/>
+                                <field name="subtotal"/>
+                            </group>
+                        </group>
+
+                    <!-- Approval Information will be shown automatically if workflow exists -->
+
+                        <notebook>
+                            <page string="Sales" name="sales">
+                                <group>
+                                    <field name="lines">
+                                        <list string="Order lines">
+                                            <field name="product_id"/>
+                                            <field name="name"/>
+                                            <field name="quantity"/>
+                                            <field name="price" optional="show"/>
+                                            <field name="subtotal" optional="hide"/>
+
+                                        </list>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Products" name="products">
+                                <group>
+                                    <field name="product_ids">
+                                        <list string="Products" editable="bottom">
+                                            <field name="name"/>
+
+                                        </list>
+                                    </field>
+                                </group>
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_window" model="baseactionactwindow">
+        <field name="name">sale</field>
+        <field name="type">baseactionactwindow</field>
+        <field name="res_model">sale</field>
+        <field name="view_mode">list,form</field>
+        <field name="view" ref="view_sale_list"/>
+        <field name="context">{}</field>
+        <field name="help">Create and manage sale.</field>
+    </record>
+
+    <menuitem action="action_sale_window" parent="menu_sale_sub" name="Sale Orders" id="menu_action_sale" sequence="15"/>
+
+    <menuitem action="action_sale_window" parent="menu_sale_sub" name="Sale Orders Restricted" id="menu_action_sale_restrict" sequence="16"/>
+
+    <record id="sale.sale_restrict" model="basemodelrestrict">
+        <field name="menus" eval="[(4, ref('sale.menu_action_sale_restrict'))]"/>
+    </record>
+
+    <record id="action_server_sale_unlink" model="baseactionserver">
+        <field name="name">Action Unlink</field>
+        <field name="type">baseactionserver</field>
+        <field name="model" ref="model_sale"/>
+        <field name="binding_model" ref="model_sale"/>
+        <field name="state">code</field>
+        <field name="code">records.action_unlink()</field>
+    </record>
+
+    <record id="action_server_export_selected" model="baseactionserver">
+        <field name="name">Export</field>
+        <field name="type">baseactionserver</field>
+        <field name="model" ref="model_sale"/>
+        <field name="binding_model" ref="model_sale"/>
+        <field name="state">code</field>
+        <field name="code">records.action_export_data()</field>
+    </record>
+
+</hmx>

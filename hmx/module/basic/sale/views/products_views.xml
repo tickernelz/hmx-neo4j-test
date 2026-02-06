@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hmx>
+    <menuitem id="menu_products_sale_sub" name="Products" parent="sale.menu_sale_root" sequence="2"/>
+
+    <record id="view_product_inherit_form" model="baseuiview">
+        <field name="name">view.product.inherit.form</field>
+        <field name="model">products</field>
+        <field name="inherit" ref="product.view_products_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Sales" name="Sales">
+                        <group>
+                            <field name="orderline">
+                                <list string="Order Line" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                </list>
+                            </field>
+                        </group>
+                    </page>
+
+                </notebook>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="after">
+                <field name="total_sales"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <menuitem action="product.action_products_window" parent="menu_products_sale_sub" name="Products" id="menu_action_sale_product" sequence="1"/>
+
+
+</hmx>
