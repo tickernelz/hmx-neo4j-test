@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+  <menuitem id="menu_ai_root" name="AI" sequence="0" />
+  <menuitem id="menu_ai_session_sub" name="Session" parent="menu_ai_root" sequence="10" />
+  <menuitem id="menu_ai_agent_config_sub" name="Configurations" parent="menu_ai_root" sequence="20" />
+
+  <menuitem id="menu_ai_chat_interface" name="Chat Interface" parent="menu_ai_root"
+            action="action_ai_chat_interface_client" sequence="0" />
+  <menuitem id="menu_action_ai_session_window" name="AI Sessions" parent="menu_ai_session_sub"
+            action="action_ai_session_window" sequence="10" />
+  <menuitem id="menu_action_ai_message_window" name="AI Messages" parent="menu_ai_session_sub"
+            action="action_ai_message_window" sequence="20" />
+  <menuitem id="menu_action_ai_agent_config_window" name="AI Configurations" parent="menu_ai_agent_config_sub"
+            action="action_ai_agent_config_window" sequence="10" />
+
+  <menuitem id="menu_ai_knowledge_sub" name="Base Knowledge" parent="menu_ai_root" sequence="15"/>
+  <menuitem id="menu_action_ai_knowledge_window" name="Knowledge Base" parent="menu_ai_knowledge_sub"
+            action="action_ai_knowledge_window" sequence="10"/>
+  <menuitem id="menu_action_ai_knowledge_wizard" name="Create Knowledge" parent="menu_ai_knowledge_sub"
+            action="action_ai_knowledge_wizard" sequence="20"/>
+
+</hmx>

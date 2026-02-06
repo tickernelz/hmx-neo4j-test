@@ -1,0 +1,34 @@
+<hmx>
+
+    <record id="module_category_sale" model="basemodulecategory">
+        <field name="name">Category Sale</field>
+        <field name="sequence" eval="99"/>
+    </record>
+
+    <record id="group_sale_user" model="group">
+        <field name="name">Sale User</field>
+        <field name="implieds" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category" ref="module_category_sale"/>
+    </record>
+
+    <record id="group_sale_accountant" model="group">
+        <field name="name">Sale Accountant</field>
+        <field name="implieds" eval="[(4, ref('sale.group_sale_user'))]"/>
+        <field name="category" ref="module_category_sale"/>
+    </record>
+
+    <record id="group_sale_manager" model="group">
+        <field name="name">Sale Manager</field>
+        <field name="implieds" eval="[(4, ref('sale.group_sale_accountant'))]"/>
+        <field name="category" ref="module_category_sale"/>
+    </record>
+
+    <record id="base.group_profile_user" model="group">
+        <field name="implieds" eval="[(4, ref('sale.group_sale_user'))]"/>
+    </record>
+
+    <record id="base.group_profile_settings" model="group">
+        <field name="implieds" eval="[(4, ref('sale.group_sale_manager'))]"/>
+    </record>
+
+</hmx>

@@ -1,0 +1,314 @@
+.hx-hashy-session-dropdown {
+}
+
+.hx-hashy-session-dropdown .hashy-dropdown {
+  width: 380px;
+  max-height: 520px;
+  background: #ffffff;
+  border: 1px solid #e8e9eb;
+  border-radius: 16px;
+  box-shadow:
+    0px 4px 10px 0px rgba(66, 74, 83, 0.12),
+    0px 2px 6px -3px rgba(66, 74, 83, 0.04),
+    0px 0px 0px 1px rgba(208, 215, 222, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hx-hashy-session-dropdown .hashy-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fcfcfc;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e8e9eb;
+}
+
+.hx-hashy-session-dropdown .hashy-header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.hx-hashy-session-dropdown .hashy-header-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2em;
+  color: #1e1e1e;
+}
+
+.hx-hashy-session-dropdown .hashy-counter-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  background: #e0eeff;
+  color: #006fff;
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5em;
+  min-width: 20px;
+  height: 18px;
+}
+
+.hx-hashy-session-dropdown .hashy-btn-new {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: none;
+  color: #006fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hx-hashy-session-dropdown .hashy-btn-new:hover {
+  background-color: #e0eeff;
+}
+
+.hx-hashy-session-dropdown .hashy-btn-new svg {
+  width: 16px;
+  height: 16px;
+}
+
+.hx-hashy-session-dropdown .hashy-search {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e8e9eb;
+}
+
+.hx-hashy-session-dropdown .hashy-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hx-hashy-session-dropdown .hashy-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.hx-hashy-session-dropdown .hashy-search-input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border: 1px solid #e8e9eb;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  background: #fafafa;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.hx-hashy-session-dropdown .hashy-search-input:focus {
+  outline: none;
+  border-color: #006fff;
+  background: #ffffff;
+}
+
+.hx-hashy-session-dropdown .hashy-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.hx-hashy-session-dropdown .hashy-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 380px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hx-hashy-session-dropdown .hashy-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hx-hashy-session-dropdown .hashy-group-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #757575;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0 4px;
+}
+
+.hx-hashy-session-dropdown .hashy-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid #e8e9eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.hx-hashy-session-dropdown .hashy-item:hover {
+  border-color: #006fff;
+  box-shadow: 0 2px 8px rgba(0, 111, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.hx-hashy-session-dropdown .hashy-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hx-hashy-session-dropdown .hashy-session-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+  color: #1e1e1e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hx-hashy-session-dropdown .hashy-session-preview {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hx-hashy-session-dropdown .hashy-session-time {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #9ca3af;
+}
+
+.hx-hashy-session-dropdown .hashy-session-status {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.hx-hashy-session-dropdown .hashy-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+}
+
+.hx-hashy-session-dropdown .hashy-session-status.started .hashy-status-dot {
+  background: #10b981;
+}
+
+.hx-hashy-session-dropdown .hashy-session-status.ended .hashy-status-dot {
+  background: #6b7280;
+}
+
+.hx-hashy-session-dropdown .hashy-session-status.draft .hashy-status-dot {
+  background: #f59e0b;
+}
+
+.hx-hashy-session-dropdown .hashy-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hx-hashy-session-dropdown .hashy-empty-icon {
+  font-size: 48px;
+  opacity: 0.4;
+  margin-bottom: 12px;
+}
+
+.hx-hashy-session-dropdown .hashy-empty-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.hx-hashy-session-dropdown .hashy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+.hx-hashy-session-dropdown .hashy-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hx-hashy-session-dropdown .hashy-list::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+.hx-hashy-session-dropdown .hashy-list::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 3px;
+}
+
+.hx-hashy-session-dropdown .hashy-list::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+@media (max-width: 480px) {
+  .hx-hashy-session-dropdown .hashy-dropdown {
+    width: 320px;
+    right: -30px;
+  }
+
+  .hx-hashy-session-dropdown .hashy-header {
+    padding: 10px 12px;
+  }
+
+  .hx-hashy-session-dropdown .hashy-header-title {
+    font-size: 18px;
+  }
+
+  .hx-hashy-session-dropdown .hashy-search {
+    padding: 10px 12px;
+  }
+
+  .hx-hashy-session-dropdown .hashy-list {
+    padding: 12px;
+    max-height: 340px;
+  }
+
+  .hx-hashy-session-dropdown .hashy-item {
+    padding: 10px;
+  }
+}

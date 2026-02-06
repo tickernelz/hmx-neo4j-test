@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+
+        <record id="seq_sale_order" model="basesequence">
+            <field name="name">Sales Order</field>
+            <field name="code">sale.order</field>
+            <field name="prefix">S</field>
+            <field name="padding">5</field>
+            <field name="company" eval="False"/>
+        </record>
+
+    </data>
+</hmx>

@@ -1,0 +1,4 @@
+id,name,model:id,group:id,perm_read,perm_write,perm_create,perm_unlink
+acess_sale,Sale Access,model_sale,base.group_user,1,1,1,1
+acess_saleorderline,Sale Order Line Access,model_saleorderline,base.group_user,1,1,1,1
+access_sale_report_all,Access Sale Report All,model_salereport,base.group_user,1,1,1,1

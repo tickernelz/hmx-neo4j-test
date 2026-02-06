@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <record id="sale_customer_category_list" model="baseuiview">
+        <field name="name">sale.customer.category.list</field>
+        <field name="model">salecustomercategory</field>
+        <field name="arch" type="xml">
+            <list string="Customer Categories">
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_customer_category_form" model="baseuiview">
+        <field name="name">sale.customer.category.form</field>
+        <field name="model">salecustomercategory</field>
+        <field name="arch" type="xml">
+            <form string="Customer Category">
+                <sheet>
+                    <group>
+                        <group col="6">
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group col="6">
+                            <field name="created_by" readonly="1" attrs="{'invisible': [('id', '=', False)]}"/>
+                            <field name="created_at" readonly="1" string="Created On" widget="datetime" attrs="{'invisible': [('id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Customers" name="customers">
+                            <group>
+                                <field name="base_partner_ids" nolabel="1" readonly="1" context="{'default_partner_type': 'customer'}">
+                                    <list string="Customers">
+                                        <field name="customer_id"/>
+                                        <field name="name" string="Customer Name"/>
+                                        <field name="phone_number"/>
+                                        <field name="mobile_number"/>
+                                        <field name="email"/>
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+   <!-- Quick View -->
+   <record id="view_sale_customer_category_quick" model="baseuiview">
+        <field name="name">sale.customer.category.quick</field>
+        <field name="model">salecustomercategory</field>
+        <field name="type">quick</field>
+        <field name="arch" type="xml">
+            <form string="Customer Category View" class="hmx-quick-view" create="0" edit="1" delete="false">
+                <header></header>
+                <sheet>
+                    <group class="party-header" col="4">
+                        <field name="name" readonly="1"/>
+                    </group>
+
+                    <group class="contact-box" string="">
+                        <field name="edited_by" icon="icon-user-rounded-outline" field_type="meta" readonly="1" string="Updated By"/>
+                        <field name="updated_at" icon="icon-clock-circle-outline" field_type="meta" readonly="1" string="Last Edited"/>
+                    </group>
+                    <notebook lazy_load="1">
+                        <page string="Customers" name="customers" lazy_load="1">
+                            <group lazy_load="1">
+                                <field name="base_partner_ids" nolabel="1">
+                                    <list string="Customers" editable="bottom">
+                                        <field name="customer_id" readonly="1"/>
+                                        <field name="name" string="Customer Name" readonly="1"/>
+                                        <field name="phone_number" readonly="1"/>
+                                        <field name="mobile_number" readonly="1"/>
+                                        <field name="email" readonly="1"/>
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_customer_category_kanban" model="baseuiview">
+        <field name="name">sale.customer.category.kanban</field>
+        <field name="model">salecustomercategory</field>
+        <field name="priority">6000</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="hx_modules_kanban_v2">
+                <templates col="4">
+                    <filter>
+                        <field name="created_at"/>
+                        <field name="updated_at"/>
+                    </filter>
+                    <t t-name="kanban-box">
+                        <footer>
+                            <field name="name"/>
+                            <div class="hx_module_action">
+                                <button name="action_view_quick" string="Quick View" type="object" class="btn-primary"/>
+                            </div>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="sale_customer_category_action" model="baseactionactwindow">
+        <field name="name">Customer Categories</field>
+        <field name="res_model">salecustomercategory</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="views" eval="[(ref('sale_customer_category_list'), 'list'), (ref('sale_customer_category_form'), 'form'), (ref('sale_customer_category_kanban'), 'kanban')]"/>
+    </record>
+
+    <menuitem id="menu_sale_customer_category" name="Customer Categories" parent="master_sale.menu_sale_configuration_customer_sub" sequence="2" action="sale_customer_category_action"/>
+
+</hmx>

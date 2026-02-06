@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <record id="action_ai_chat_interface_client" model="baseactionclient">
+        <field name="name">AI Chat Interface</field>
+        <field name="tag">hx-ai-chat-interface</field>
+        <field name="target">current</field>
+        <field name="res_model">aisession</field>
+        <field name="context">{}</field>
+    </record>
+</hmx>

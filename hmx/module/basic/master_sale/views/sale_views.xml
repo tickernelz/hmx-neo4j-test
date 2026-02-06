@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <menuitem id="menu_master_sale_root" name="Sales &amp; Marketing" web_icon="icon-sales" sequence="0"/>
+    <menuitem id="menu_sale_configuration_sub" name="Configuration" parent="master_sale.menu_master_sale_root" sequence="4"/>
+    <menuitem id="menu_sale_configuration_customer_sub" parent="menu_sale_configuration_sub" name="Customer"  sequence="1"/>
+    <menuitem id="menu_sale_order_sub" name="Order" web_icon="icon-accounting-master-data" parent="master_sale.menu_master_sale_root" sequence="1"/>
+    <menuitem id="menu_sale_product_sub" name="Product" parent="master_sale.menu_master_sale_root" sequence="3"/>
+    <menuitem id="menu_sale_configuration_order_sub" parent="menu_sale_configuration_sub" name="Order" sequence="2"/>
+    <!-- Todo list-->
+</hmx>

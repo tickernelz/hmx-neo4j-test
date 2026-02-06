@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+  <record id="view_ai_knowledge_wizard_form" model="baseuiview">
+    <field name="name">view.ai.knowledge.wizard.form</field>
+    <field name="model">aiknowledgewizard</field>
+    <field name="arch" type="xml">
+      <form string="Create Knowledge Base">
+        <group>
+          <field name="document_type" widget="radio" />
+        </group>
+
+        <group>
+          <field name="title" />
+        </group>
+
+        <group attrs="{'invisible': [('document_type', '!=', 'text')]}">
+          <group>
+            <field name="content" nolabel="1"
+                   placeholder="Enter text content (max 65,535 characters)..."
+                   widget="text" />
+          </group>
+        </group>
+
+
+        <group attrs="{'invisible': [('document_type', '!=', 'qa')]}">
+          <group>
+            <field name="content" widget="text"
+                   placeholder="Enter your question (max 65,535 characters)..." />
+            <field name="answer" widget="text"
+                   placeholder="Enter the answer (max 65,535 characters)..." />
+          </group>
+        </group>
+
+        <group attrs="{'invisible': [('document_type', '!=', 'file')]}">
+          <group>
+            <field name="file" />
+          </group>
+        </group>
+
+        <group attrs="{'invisible': [('validation_message', '=', False)]}">
+            <field name="validation_message" nolabel="1" />
+        </group>
+
+        <footer>
+          <button string="Create"
+                  name="action_create_knowledge"
+                  type="object"
+                  class="btn btn-primary"
+                  attrs="{'invisible': [('validation_message', '!=', False)]}" />
+          <button string="Cancel" special="cancel" class="btn btn-secondary"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_ai_knowledge_wizard" model="baseactionactwindow">
+    <field name="name">Create Knowledge Base</field>
+    <field name="res_model">aiknowledgewizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+</hmx>

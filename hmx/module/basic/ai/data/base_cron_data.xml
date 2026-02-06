@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hmx>
+
+    <record id="crontab_every_30_minutes" model="crontabschedule">
+        <field name="name">Every 30 Minutes</field>
+        <field name="minute">*/30</field>
+        <field name="hour">*</field>
+        <field name="day_of_week">*</field>
+        <field name="day_of_month">*</field>
+        <field name="month_of_year">*</field>
+        <field name="timezone">Asia/Jakarta</field>
+    </record>
+
+    <record id="server_auto_refresh_ai_tokens" model="baseactionserver">
+        <field name="name">Auto Refresh AI Tokens</field>
+        <field name="type">baseactionserver</field>
+        <field name="model" ref="model_aiagentconfig"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_refresh_tokens()</field>
+    </record>
+
+    <record id="periodictask_auto_refresh_ai_tokens" model="periodictask">
+        <field name="name">Auto Refresh AI Tokens</field>
+        <field name="act_server" ref="server_auto_refresh_ai_tokens"/>
+        <field name="schedule_type">crontab</field>
+        <field name="crontab" ref="crontab_every_30_minutes"/>
+        <field name="enabled" eval="True"/>
+        <field name="start_time" eval="timezone.now()"/>
+    </record>
+
+    <record id="crontab_daily_midnight" model="crontabschedule">
+        <field name="name">Daily at Midnight</field>
+        <field name="minute">0</field>
+        <field name="hour">0</field>
+        <field name="day_of_week">*</field>
+        <field name="day_of_month">*</field>
+        <field name="month_of_year">*</field>
+        <field name="timezone">Asia/Jakarta</field>
+    </record>
+
+    <record id="server_auto_cleanup_hashy_reports" model="baseactionserver">
+        <field name="name">Auto Cleanup Hashy Reports</field>
+        <field name="type">baseactionserver</field>
+        <field name="model" ref="base.model_basereport"/>
+        <field name="state">code</field>
+        <field name="code">model.cleanup_hashy_reports(days=3)</field>
+    </record>
+
+    <record id="periodictask_auto_cleanup_hashy_reports" model="periodictask">
+        <field name="name">Auto Cleanup Hashy Reports</field>
+        <field name="act_server" ref="server_auto_cleanup_hashy_reports"/>
+        <field name="schedule_type">crontab</field>
+        <field name="crontab" ref="crontab_daily_midnight"/>
+        <field name="enabled" eval="False"/>
+        <field name="start_time" eval="timezone.now()"/>
+    </record>
+
+    <record id="crontab_every_hour" model="crontabschedule">
+        <field name="name">Every Hour</field>
+        <field name="minute">0</field>
+        <field name="hour">*</field>
+        <field name="day_of_week">*</field>
+        <field name="day_of_month">*</field>
+        <field name="month_of_year">*</field>
+        <field name="timezone">Asia/Jakarta</field>
+    </record>
+
+    <record id="server_auto_sync_knowledge_base" model="baseactionserver">
+        <field name="name">Auto Sync Knowledge Base</field>
+        <field name="type">baseactionserver</field>
+        <field name="model" ref="model_aiknowledge"/>
+        <field name="state">code</field>
+        <field name="code">model.sync_from_hashy()</field>
+    </record>
+
+    <record id="periodictask_auto_sync_knowledge_base" model="periodictask">
+        <field name="name">Auto Sync Knowledge Base</field>
+        <field name="act_server" ref="server_auto_sync_knowledge_base"/>
+        <field name="schedule_type">crontab</field>
+        <field name="crontab" ref="crontab_every_hour"/>
+        <field name="enabled" eval="True"/>
+        <field name="start_time" eval="timezone.now()"/>
+    </record>
+
+</hmx>

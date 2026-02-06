@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <record id="sale_order_list" model="baseuiview">
+        <field name="name">sale.order.list</field>
+        <field name="model">saleorder</field>
+        <field name="arch" type="xml">
+            <list string="Sales Orders">
+                <field name="name"/>
+                <field name="customer"/>
+                <field name="delivery_address"/>
+                <field name="currency"/>
+                <field name="quotation_expiry_date"/>
+                <field name="delivery_date"/>
+                <field name="total_sum"/>
+                <field name="state"/>
+                <field name="branch"/>
+                <field name="company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_order_form" model="baseuiview">
+        <field name="name">sale.order.form</field>
+        <field name="model">saleorder</field>
+        <field name="arch" type="xml">
+            <form string="Sales Order">
+                <header>
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,to_approve,sent,sale,closed,cancelled,rejected,revised"/>
+
+                    <button name="action_confirm"
+                            string="Confirm"
+                            type="object"
+                            class="btn-primary"
+                            attrs="{'invisible': [('state','!=','draft')]}"/>
+
+                    <button name="action_cancel"
+                            string="Cancel"
+                            type="object"
+                            class="btn-secondary"
+                            attrs="{'invisible': [('state','not in',['draft','sale'])]}"/>
+
+                    <button name="action_close"
+                            string="Close"
+                            type="object"
+                            class="btn-secondary"
+                            attrs="{'invisible': [('state','!=','sale')]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="customer" required="1" domain="[('is_customer','=', True)]" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="delivery_address"/>
+                            <field name="invoice_address" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="company" readonly="1"/>
+                            <field name="branch" domain="[('company','=', company)]" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="price_list"/>
+                        </group>
+                        <group>
+                            <field name="currency" required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="delivery_date" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="warehouse" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="location" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="quotation_expiry_date" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            <field name="remarks" attrs="{'readonly': [('state','!=','draft')]}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Order Lines" name="order_lines">
+                            <group>
+                                <group>
+                                    <field name="order_line_ids" nolabel="1" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                        <list editable="bottom">
+                                            <field name="product_lines"/>
+                                            <field name="product_description"/>
+                                            <field name="delivery_date_lines"/>
+                                            <field name="quantity_lines"/>
+                                            <field name="uom_lines"/>
+                                            <field name="unit_price_lines"/>
+                                            <field name="subtotal_lines"/>
+                                        </list>
+                                    </field>
+                                </group>
+                            </group>
+                            <group class="hx_group_tab">
+                                <!-- Left -->
+                                <!--<group string="Global Discount" banner_info="Add percentage to percentage discount" banner_icon="icon-lamp" description="Applied to subtotal after line discounts">
+                                    <field name="price_list" attrs="{'readonly': [('state', 'not in', ('draft'))]}" placeholder="e.g., 10%+50 or 30%+20%" />
+                                </group>-->
+
+                                <!-- Right -->
+                                <group col="6" class="hx_subtotal_footer" icon="icon-document-text" string="Order Summary">
+                                    <field name="subtotal_sum" widget="monetary" options="{'currency' : 'currency'}" />
+                                    <field name="total_sum" widget="monetary" options="{'currency' : 'currency'}" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="is_sale_order" invisible="1"/>
+                    <field name="sq_ref_name" invisible="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Quick View -->
+   <record id="view_sale_order_quick" model="baseuiview">
+        <field name="name">sale.order.quick</field>
+        <field name="model">saleorder</field>
+        <field name="type">quick</field>
+        <field name="arch" type="xml">
+            <form string="Sale Order View" class="hmx-quick-view" create="0" edit="1" delete="false">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sale,cancelled,closed"/>
+                </header>
+                <sheet>
+                    <group class="party-header" col="4">
+                        <field name="name" readonly="1"/>
+                    </group>
+                    <group class="contact-box" string="">
+                        <field name="customer" string="Customer" icon="icon-card" field_type="main" readonly="1"/>
+                        <field name="currency" string="Currency" field_type="main" readonly="1"/>
+                        <field name="company" string="Company" icon="icon-building-outline" field_type="main" readonly="1"/>
+                        <field name="edited_by" icon="icon-user-rounded-outline" field_type="meta" readonly="1" string="Updated By"/>
+                        <field name="updated_at" icon="icon-clock-circle-outline" field_type="meta" readonly="1" string="Last Edited"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_quotation_action" model="baseactionactwindow">
+        <field name="name">Quotations</field>
+        <field name="res_model">saleorder</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_sale_order','=',False)]</field>
+        <field name="views"
+               eval="[
+                    (ref('sale_order_list'), 'list'),
+                    (ref('sale_order_form'), 'form')
+               ]"/>
+    </record>
+
+    <record id="sale_order_action" model="baseactionactwindow">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">saleorder</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_sale_order','=',True)]</field>
+        <field name="views"
+               eval="[
+                    (ref('sale_order_list'), 'list'),
+                    (ref('sale_order_form'), 'form')
+               ]"/>
+    </record>
+
+    <menuitem id="menu_sale_quotation"
+              name="Quotation"
+              parent="master_sale.menu_sale_order_sub"
+              sequence="1"
+              action="sale_quotation_action"/>
+
+    <menuitem id="menu_sale_order"
+              name="Sale Order"
+              parent="master_sale.menu_sale_order_sub"
+              sequence="2"
+              action="sale_order_action"/>
+
+</hmx>

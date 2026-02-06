@@ -1,0 +1,256 @@
+/*hmx-ignore-file: all*/
+
+.hx-ai-chat-interface .hashy-attachment-preview,
+.hx-hashy-chat-view .hashy-attachment-preview,
+.hx-hashy-chat-view .hashy-modal-input .hashy-attachment-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.hx-ai-chat-interface .hashy-attachment-item,
+.hx-hashy-chat-view .hashy-attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #e8e9eb;
+  border-radius: 10px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.hx-ai-chat-interface .hashy-attachment-item:hover,
+.hx-hashy-chat-view .hashy-attachment-item:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.hx-ai-chat-interface .hashy-file-icon-wrapper,
+.hx-hashy-chat-view .hashy-file-icon-wrapper {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.hx-ai-chat-interface .hashy-attachment-item:hover .hashy-file-icon-wrapper,
+.hx-hashy-chat-view .hashy-attachment-item:hover .hashy-file-icon-wrapper {
+  background: #e5e7eb;
+}
+
+.hx-ai-chat-interface .hashy-file-icon,
+.hx-hashy-chat-view .hashy-file-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.hx-ai-chat-interface .file-icon-pdf,
+.hx-hashy-chat-view .file-icon-pdf {
+  color: #ef4444;
+}
+
+.hx-ai-chat-interface .file-icon-document,
+.hx-hashy-chat-view .file-icon-document {
+  color: #3b82f6;
+}
+
+.hx-ai-chat-interface .file-icon-spreadsheet,
+.hx-hashy-chat-view .file-icon-spreadsheet {
+  color: #10b981;
+}
+
+.hx-ai-chat-interface .file-icon-presentation,
+.hx-hashy-chat-view .file-icon-presentation {
+  color: #f59e0b;
+}
+
+.hx-ai-chat-interface .file-icon-image,
+.hx-hashy-chat-view .file-icon-image {
+  color: #8b5cf6;
+}
+
+.hx-ai-chat-interface .file-icon-archive,
+.hx-hashy-chat-view .file-icon-archive {
+  color: #f59e0b;
+}
+
+.hx-ai-chat-interface .file-icon-text,
+.hx-hashy-chat-view .file-icon-text {
+  color: #6b7280;
+}
+
+.hx-ai-chat-interface .file-icon-code,
+.hx-hashy-chat-view .file-icon-code {
+  color: #8b5cf6;
+}
+
+.hx-ai-chat-interface .file-icon-generic,
+.hx-hashy-chat-view .file-icon-generic {
+  color: #6b7280;
+}
+
+.hx-ai-chat-interface .hashy-file-info,
+.hx-hashy-chat-view .hashy-file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 150px;
+}
+
+.hx-ai-chat-interface .hashy-file-name,
+.hx-hashy-chat-view .hashy-file-name {
+  font-weight: 500;
+  color: #1e1e1e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.4;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.hx-ai-chat-interface .hashy-file-size,
+.hx-hashy-chat-view .hashy-file-size {
+  color: #9ca3af;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.4;
+}
+
+.hx-ai-chat-interface .hashy-upload-status,
+.hx-hashy-chat-view .hashy-upload-status {
+  font-size: 11px;
+  color: #9ca3af;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.hx-ai-chat-interface .hashy-remove-file-btn,
+.hx-hashy-chat-view .hashy-remove-file-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.hx-ai-chat-interface .hashy-remove-file-btn:hover,
+.hx-hashy-chat-view .hashy-remove-file-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.hx-ai-chat-interface .hashy-remove-file-btn svg,
+.hx-hashy-chat-view .hashy-remove-file-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent,
+.hx-hashy-chat-view .hashy-attachment-sent {
+  margin-bottom: 8px;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent .hashy-attachment-item,
+.hx-hashy-chat-view .hashy-attachment-sent .hashy-attachment-item {
+  background: #f8f9fa;
+  border-color: #e8e9eb;
+  cursor: pointer;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent .hashy-attachment-item:hover,
+.hx-hashy-chat-view .hashy-attachment-sent .hashy-attachment-item:hover {
+  background: #f0f1f3;
+  border-color: #d1d5db;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent .hashy-file-name,
+.hx-hashy-chat-view .hashy-attachment-sent .hashy-file-name {
+  color: #8839e7;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent .hashy-file-name:hover,
+.hx-hashy-chat-view .hashy-attachment-sent .hashy-file-name:hover {
+  color: #7c3aed;
+  text-decoration: underline;
+}
+
+.hx-ai-chat-interface .hashy-attachment-sent .hashy-remove-file-btn,
+.hx-hashy-chat-view .hashy-attachment-sent .hashy-remove-file-btn {
+  display: none;
+}
+
+@keyframes attachmentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hx-ai-chat-interface .hashy-attachment-item,
+.hx-hashy-chat-view .hashy-attachment-item {
+  animation: attachmentSlideIn 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+  .hx-ai-chat-interface .hashy-attachment-item,
+  .hx-hashy-chat-view .hashy-attachment-item {
+    padding: 8px 12px;
+  }
+
+  .hx-ai-chat-interface .hashy-file-icon-wrapper,
+  .hx-hashy-chat-view .hashy-file-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hx-ai-chat-interface .hashy-file-icon,
+  .hx-hashy-chat-view .hashy-file-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hx-ai-chat-interface .hashy-file-name,
+  .hx-hashy-chat-view .hashy-file-name {
+    font-size: 12px;
+  }
+
+  .hx-ai-chat-interface .hashy-file-size,
+  .hx-hashy-chat-view .hashy-file-size {
+    font-size: 11px;
+  }
+}

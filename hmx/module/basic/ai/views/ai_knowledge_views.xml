@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <record id="view_ai_knowledge_list" model="baseuiview">
+        <field name="name">view.ai.knowledge.list</field>
+        <field name="model">aiknowledge</field>
+        <field name="arch" type="xml">
+            <list string="Knowledge Base" create="false" duplicate="false">
+                <field name="name"/>
+                <field name="document_type"/>
+                <field name="created_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_knowledge_form" model="baseuiview">
+        <field name="name">view.ai.knowledge.form</field>
+        <field name="model">aiknowledge</field>
+        <field name="arch" type="xml">
+            <form string="Knowledge Base Detail" edit="false" duplicate="false">
+                <header>
+                    <button name="action_preview_file"
+                            string="Preview File"
+                            type="object"
+                            class="btn btn-primary"
+                            attrs="{'invisible': [('document_type', '!=', 'file')]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="document_type"/>
+                            <field name="created_at"/>
+                        </group>
+                        <group>
+                            <field name="original_file_name"
+                                   attrs="{'invisible': [('document_type', '!=', 'file')]}"/>
+                            <field name="collection_id"/>
+                            <field name="total_chunks"/>
+                        </group>
+                    </group>
+
+                    <group string="Content"
+                           attrs="{'invisible': [('document_type', '!=', 'text')]}">
+                        <field name="content" nolabel="1" widget="text"/>
+                    </group>
+
+                  <group string="File Information"
+                           attrs="{'invisible': [('document_type', '!=', 'file')]}">
+                        <group>
+                            <field name="file_size"/>
+                            <field name="mime_type"/>
+                            <field name="word_count"/>
+                        </group>
+                        <group>
+                            <field name="character_count"/>
+                            <field name="has_images"/>
+                            <field name="image_count"
+                                   attrs="{'invisible': [('has_images', '=', False)]}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Question &amp; Answer" attrs="{'invisible': [('document_type', '!=', 'qa')]}">
+                            <group>
+                                <label for="content" string="Question"/>
+                                <field name="content" nolabel="1" widget="text"/>
+                            </group>
+                            <group>
+                                <label for="answer" string="Answer"/>
+                                <field name="answer" nolabel="1" widget="text"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ai_knowledge_search" model="baseuiview">
+        <field name="name">view.ai.knowledge.search</field>
+        <field name="model">aiknowledge</field>
+        <field name="arch" type="xml">
+            <search string="Search Knowledge Base">
+                <field name="name" string="Title"/>
+                <field name="content" string="Content"/>
+                <field name="document_type" string="Type"/>
+                <separator/>
+                <filter name="filter_text" string="Free Text" domain="[('document_type', '=', 'text')]"/>
+                <filter name="filter_qa" string="Q&amp;A" domain="[('document_type', '=', 'qa')]"/>
+                <filter name="filter_file" string="Files" domain="[('document_type', '=', 'file')]"/>
+                <separator/>
+                <filter name="date_range" string="Range by Date" field="auto" filter_type="date_range"/>
+                <filter name="create_date" string="Created Date" field="created_at" filter_type="date_filter"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_type" string="Document Type" context="{'group_by': 'document_type'}"/>
+                    <filter name="groupby_date" string="Created Date" context="{'group_by': 'created_at'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ai_knowledge_window" model="baseactionactwindow">
+        <field name="name">Knowledge Base</field>
+        <field name="res_model">aiknowledge</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="context">{}</field>
+        <field name="help">Create and manage AI Knowledge Base.</field>
+    </record>
+</hmx>

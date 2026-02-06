@@ -1,0 +1,21 @@
+{
+    "name": "Master_Sale",
+    "category": "Master_Sale Category",
+    "version": "1.0.0",
+    "description": "Master_Sale Description",
+    "author": "Hashmicro",
+    "data": [
+        "security/security.xml",
+        "security/base.model.access.csv",
+        "data/sale_decimal_accuracy_data.xml",
+        "data/customer_sequence_data.xml",
+        "data/base_partner_type_data.xml",
+        "data/sale_quotation_order_sequence_data.xml",
+        "views/sale_views.xml",
+        "views/sale_customer_category_views.xml",
+        "views/sale_customer_views.xml",
+        "views/sale_order_views.xml",
+        "views/sale_product_views.xml",
+    ],
+    "depends": ["base", "core_product"],
+}

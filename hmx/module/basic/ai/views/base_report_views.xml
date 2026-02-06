@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <record model="baseuiview" id="view_base_report_form_inherit_ai">
+        <field name="name">basereport.form.inherit.ai</field>
+        <field name="model">basereport</field>
+        <field name="mode">extension</field>
+        <field name="inherit" ref="base.view_base_report_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='action_id']" position="after">
+                <field name="is_hashy"/>
+            </xpath>
+        </field>
+    </record>
+</hmx>

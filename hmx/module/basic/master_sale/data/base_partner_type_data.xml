@@ -1,0 +1,10 @@
+<hmx>
+<data>
+    <record id="base_partner_address_type_delivery" model="basepartneraddresstype">
+        <field name="name">Delivery Address</field>
+    </record>
+    <record id="base_partner_address_type_invoice" model="basepartneraddresstype">
+        <field name="name">Invoice Address</field>
+    </record>
+</data>
+</hmx>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+
+    <record id="sale_kanban_customer_view" model="baseuiview">
+        <field name="name">sale.kanban.customer</field>
+        <field name="model">basepartner</field>
+        <field name="arch" type="xml">
+            <kanban create="true" class="hx_modules_kanban_v2">
+                <templates col="3">
+                    <filter>
+                        <field name="customer_id" can_create="true" can_write="true"/>
+                    </filter>
+                    <t t-name="kanban-box">
+                        <header attrs="{'invisible': [('customer_category', '=', False)]}">
+                            <field name="customer_id" class="hx_unique"/>
+                            <field name="customer_category" class="hx_statusbar"/>
+                        </header>
+                        <content>
+                            <field name="phone_number" icon="icon-fa-solid-phone"/>
+                            <field name="email" icon="icon-fa-solid-envelope"/>
+                            <field name="full_address" icon="icon-fa-solid-search-location"/>
+                        </content>
+                        <footer>
+                            <field name="image"/>
+                            <field name="name"/>
+                            <div class="hx_module_ction">
+                                <button name="action_customer_view_quick"
+                                        string="Quick View"
+                                        type="object"
+                                        class="btn-primary"
+                                />
+                            </div>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="sale_customer_form_quick" model="baseuiview">
+        <field name="name">view.sale.customer.quick</field>
+        <field name="model">basepartner</field>
+        <field name="type">quick</field>
+        <field name="arch" type="xml">
+            <form string="Customer - Quick View" class="hx_module_quick_view" create="0" edit="0" delete="0">
+                <sheet>
+                    <group class="party-header" col="4">
+                        <field name="image" widget="image" class="party-avatar" readonly="1"/>
+                        <field name="name" class="customer-name big-title" readonly="1"/>
+                        <field name="customer_category" class="customer-name big-title" readonly="1"/>
+                    </group>
+                    <group class="contact-box" >
+                        <field name="customer_id"  icon="icon-fa-solid-user" readonly="1"/>
+                        <field name="phone_number" icon="icon-fa-solid-phone" readonly="1"/>
+                        <field name="email" icon="icon-fa-solid-envelope" readonly="1"/>
+                        <field name="full_address"  icon="icon-fa-solid-search-location" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_list_customer_view" model="baseuiview">
+        <field name="name">sale.list.customer</field>
+        <field name="model">basepartner</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" string="Customer Name"/>
+                <field name="phone_number"/>
+                <field name="email"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_form_customer_inherit" model="baseuiview">
+        <field name="name">sale.form.customer.inherit</field>
+        <field name="model">basepartner</field>
+        <field name="inherit" ref="base.basepartner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_types']" position="after">
+                <field name="is_customer" invisible="1"/>
+                <field name="customer_id" attrs="{'invisible': ['|', ('is_customer', '=', False), ('id', '=', False)]}"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Sales" name="sales_information" attrs="{'invisible': [('is_customer', '=', False)]}">
+                    <group>
+                        <field name="customer_creation_date" readonly="1" attrs="{'invisible': [('id', '=', False)]}"/>
+                        <field name="customer_category"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_customer_action" model="baseactionactwindow">
+        <field name="name">Customers</field>
+        <field name="res_model">basepartner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('is_customer', '=', True)]</field>
+        <field name="context">{
+            'is_customer': True,
+            'kanban_view_ref': 'master_sale.sale_kanban_customer_view',
+            'list_view_ref': 'master_sale.sale_list_customer_view',
+            'form_view_ref': 'master_sale.sale_form_customer_inherit',
+            'quick_view_ref': 'master_sale.sale_customer_form_quick'
+            }</field>
+        <field name="search_view" ref="base.basepartner_search"/>
+    </record>
+
+    <menuitem id="menu_sale_customer_sub" name="Customers" parent="master_sale.menu_master_sale_root" sequence="2"/>
+    <menuitem action="sale_customer_action" parent="menu_sale_customer_sub" name="Customers" id="menu_action_sale_customer" sequence="1"/>
+</hmx>

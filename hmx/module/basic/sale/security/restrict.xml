@@ -1,0 +1,20 @@
+<hmx>
+
+    <record id="group_sale_restrict" model="group">
+        <field name="name">Sale Restrict</field>
+        <field name="category" ref="base.module_category_hidden"/>
+        <field name="is_restrict" eval="True"/>
+        <field name="users" eval="[(4, ref('base.tester_user'))]"/>
+    </record>
+
+    <record id="sale_restrict" model="basemodelrestrict">
+        <field name="model" ref="sale.model_sale"/>
+        <field name="group" ref="sale.group_sale_restrict"/>
+        <field name="restrict_create" eval="True"/>
+        <field name="fields" eval="[(5,), (0, 0, {
+            'field': ref('sale.field_sale__restricted_field'),
+            'invisible': True
+        })]"/>
+    </record>
+
+</hmx>

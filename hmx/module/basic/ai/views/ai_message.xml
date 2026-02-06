@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <!-- AI Message Form View -->
+    <record id="view_ai_message_form" model="baseuiview">
+        <field name="name">view.ai.message.form</field>
+        <field name="model">aimessage</field>
+        <field name="arch" type="xml">
+            <form class="hmx_form_ai_message" create="true" edit="true" delete="true" string="AI Message">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="session_id"/>
+                        <field name="message_type"/>
+                        <field name="external_message_id"/>
+                        <field name="attachment"/>
+                    </group>
+                    <notebook>
+                        <page string="Message Text" name="text">
+                            <group>
+                                <field name="text" widget="ace" options="{'mode': 'text'}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- form quick view -->
+     <record id="view_ai_message_quick" model="baseuiview">
+        <field name="name">view.ai.message.quick</field>
+        <field name="model">aimessage</field>
+        <field name="type">quick</field>
+        <field name="arch" type="xml">
+            <form string="AI Message Quick View" class="hmx-quick-view" create="0" edit="0" delete="false">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="session_id"/>
+                        <field name="message_type"/>
+                        <field name="external_message_id"/>
+                        <field name="attachment"/>
+                    </group>
+                    <notebook>
+                        <page string="Message Text" name="text">
+                            <group>
+                                <field name="text" widget="ace" options="{'mode': 'text'}" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+     </record>
+
+    <!-- AI Message List View -->
+    <record id="view_ai_message_list" model="baseuiview">
+        <field name="name">view.ai.message.list</field>
+        <field name="model">aimessage</field>
+        <field name="arch" type="xml">
+            <list string="AI Messages">
+                <field name="id" optional="hide"/>
+                <field name="name"/>
+                <field name="text"/>
+                <field name="message_type"/>
+                <field name="session_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Ai Message Kanban View -->
+    <record id="view_ai_message_kanban" model="baseuiview">
+        <field name="name">AI Message Kanban</field>
+        <field name="model">aimessage</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="o_modules_kanban">
+                <field name="name"/>
+                <field name="text"/>
+                <field name="message_type"/>
+                <field name="session_id"/>
+
+                <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_module_desc" t-att-title="record.name.value">
+                        <h4 class="o_kanban_record_title">
+                            <field name="name"/>&amp;nbsp;
+                        </h4>
+                        <p class="oe_module_name">
+                            <field name="text"/>
+                            <code><field name="message_type"/> - <field name="session_id"/></code>
+                        </p>
+                        <div class="oe_module_action">
+                            <button name="action_view_quick"
+                                string="Quick View"
+                                type="object"
+                                class="btn-primary"
+                                icon="icon-eye"/>
+                        </div>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- AI Message Action -->
+    <record id="action_ai_message_window" model="baseactionactwindow">
+        <field name="name">AI Messages</field>
+        <field name="res_model">aimessage</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="context">{
+            'search_default_active': 1,
+            'search_default_groupby_active': 0,
+        }</field>
+        <field name="help">Create and manage AI Chat Session.</field>
+        <field name="domain">[
+            '|' ,
+            ('created_by','=',uid),
+            ('created_by','!=',uid),
+        ]</field>
+    </record>
+</hmx>

@@ -1,0 +1,1 @@
+from . import test_sale_customer_category_crud, test_sale_customer_crud, test_sale_order_crud

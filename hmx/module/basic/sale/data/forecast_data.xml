@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+
+    <record id="sale_forecast_data" model="forecast">
+        <field name="name">Sale Forecast</field>
+        <field name="model" ref="model_saleorderline"/>
+
+        <!-- Use string format for date fields -->
+        <field name="start_date">2015-01-01</field>
+        <field name="end_date">2025-12-31</field>
+        <field name="date_field" ref="field_saleorderline__created_at"/>
+        <field name="model_type">linear</field>
+        <field name="time_grain">year</field>
+        <field name="forecast_period" eval="5"/>
+        <field name="domain">[]</field>
+        <field name="field_configs" eval="[
+            (5,),
+            (0, 0, {
+                'field': ref('field_saleorderline__quantity'),
+                'operator': 'sum',
+                'chart_type': 'bar',
+                'unit': 'Unit',
+                'color': 'rgba(153, 195, 255, 0.6)',
+            }),
+            (0, 0, {
+                'field': ref('field_saleorderline__price'),
+                'operator': 'sum',
+                'chart_type': 'area',
+                'unit': 'Rp',
+                'color': '#FFCC99',
+            })
+        ]"/>
+    </record>
+
+</hmx>

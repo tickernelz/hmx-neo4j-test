@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+        <record id="hashy_secret_key_param" model="baseconfigparameter">
+            <field name="key">hashy_secret_key</field>
+            <field name="value">HASHY-SECRET-KEY-001</field>
+        </record>
+    </data>
+</hmx>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+
+        <record id="seq_sale_quotation" model="basesequence">
+            <field name="name">Sale Quotation</field>
+            <field name="code">sale.quotation</field>
+            <field name="prefix">SQ/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">4</field>
+            <field name="implementation">no_gap</field>
+            <field name="range_reset">yearly</field>
+            <field name="company" eval="False"/>
+        </record>
+        <record id="seq_sale_order" model="basesequence">
+            <field name="name">Sale Order</field>
+            <field name="code">sale.order</field>
+            <field name="prefix">SO/%(y)s/%(month)s/%(day)s/</field>
+            <field name="padding">4</field>
+            <field name="implementation">no_gap</field>
+            <field name="range_reset">yearly</field>
+            <field name="company" eval="False"/>
+        </record>
+
+    </data>
+</hmx>

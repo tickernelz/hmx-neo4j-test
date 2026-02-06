@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hmx>
+
+    <record id="view_partners_form" model="baseuiview">
+        <field name="name">view.partners.form</field>
+        <field name="model">partner</field>
+        <field name="inherit" ref="partners.view_partners_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='notes']" position="before">
+                <page string="Sales" name="sales">
+                    <group>
+                        <field name="sale_ids">
+                            <list string="Order lines" editable="bottom">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</hmx>

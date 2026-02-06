@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="0">
+        <!-- Onboarding Data -->
+        <record id="sale_onboarding" model="onboarding.onboardingtour">
+            <field name="profile_name">Sale</field>
+            <field name="model_id" ref="model_sale" />
+            <field name="description">Sale Onboarding</field>
+            <field name="onboarding_json" type="char" file="sale/onboarding/sale_onboarding.json"/>
+        </record>
+    </data>
+
+        
+</hmx>

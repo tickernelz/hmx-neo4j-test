@@ -1,0 +1,66 @@
+.hx-topbar-button-hashy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hx-topbar-button-hashy .hashy-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.hx-topbar-button-hashy .hashy-button:hover {
+  background-color: var(--hover-bg, rgba(0, 0, 0, 0.05));
+}
+
+.hx-topbar-button-hashy .hashy-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.hx-topbar-button-hashy .hashy-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.hx-topbar-button-hashy .hashy-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.hashy-dropdown-enter-active,
+.hashy-dropdown-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hashy-dropdown-enter-from,
+.hashy-dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.hashy-overlay-enter-active,
+.hashy-overlay-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.hashy-overlay-enter-from,
+.hashy-overlay-leave-to {
+  opacity: 0;
+}

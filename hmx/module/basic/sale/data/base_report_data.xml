@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+
+        <!-- Report Excel: Sale -->
+        <record id="sale_report_excel" model="basereport">
+            <field name="name">Sale Excel Detail</field>
+            <field name="model" ref="model_sale"/>
+            <field name="template_json" type="char" file="sale/reports/sale_report_excel.json"/>
+            <field name="report_type">xlsx</field>
+            <field name="print_report_name">sale_summary</field>
+        </record>
+
+    </data>
+</hmx>

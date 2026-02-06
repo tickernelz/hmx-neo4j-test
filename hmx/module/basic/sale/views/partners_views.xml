@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+
+    <record id="view_saleorderline_o2m_nested" model="baseuiview">
+        <field name="name">view.saleorderline.o2m.nested</field>
+        <field name="model">saleorderline</field>
+        <field name="arch" type="xml">
+            <list string="Sale Order Lines">
+                <field name="product_id" />
+                <field name="name" />
+                <field name="quantity" />
+                <field name="price" />
+                <field name="subtotal" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_criteria_o2m_nested" model="baseuiview">
+        <field name="name">view.criteria.o2m.nested</field>
+        <field name="model">criteria</field>
+        <field name="arch" type="xml">
+            <list string="Criteria">
+                <field name="product_id" />
+                <field name="quantity" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Sample Options -->
+    <!-- options="[
+            {
+                'nested_field': 'lines',
+                'nested_model': 'saleorderline',
+                'nested_relation_field': 'sale_id',
+                'orderby': 'id asc',
+                'add_button_label': 'Add Sale Order Line V1',
+                'ref': 'sale.view_saleorderline_o2m_nested',
+                'empty_message': 'No lines yet. Click Add Sale Order Line to add. V1',
+                'description': 'List of products and quantities for this sale order V1',
+                'badges': ['Materials Consumed', 'Byproduct / Waste'],
+                'editable': 'bottom',
+                'enabled_child': true,
+                'parent_field': 'parent_id',
+            }, {
+                'nested_field': 'criteria',
+                'nested_model': 'criteria',
+                'nested_relation_field': 'sale_id',
+                'orderby': 'id asc',
+                'add_button_label': 'Add Criteria',
+                'ref': 'sale.view_criteria_o2m_nested',
+                'empty_message': 'No criteria yet. Click Add Criteria to add.',
+            }
+        ]"
+     -->
+    <!-- menu partners - one2many_nested -->
+    <record id="view_partners_form_inherit" model="baseuiview">
+        <field name="name">view.partners.form.inherit</field>
+        <field name="model">partner</field>
+        <field name="inherit" ref="partners.view_partners_form" />
+        <field name="mode">primary</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='notes']" position="before">
+                <page string="Sales [V1]" name="sales_v1_only">
+                    <group>
+                        <!-- Version 1 - For Partners Menu -->
+                        <!-- Widget: one2many_nested (V1) - Single Tab Example -->
+                        <field
+                            name="sale_ids"
+                            widget="one2many_nested"
+                            add_parent_label="Add Sale V1"
+                            empty_message="No sale orders yet. Click 'Add Sale' to create one. V1"
+                            options="[
+                                {
+                                    'nested_field': 'lines',
+                                    'nested_model': 'saleorderline',
+                                    'nested_relation_field': 'sale_id',
+                                    'orderby': 'id asc',
+                                    'add_button_label': 'Add Sale Order Line V1',
+                                    'ref': 'sale.view_saleorderline_o2m_nested',
+                                    'empty_message': 'No lines yet. Click Add Sale Order Line to add. V1',
+                                    'description': 'List of products and quantities for this sale order V1',
+                                    'enabled_child': true,
+                                    'parent_field': 'parent_id',
+                                }, {
+                                    'nested_field': 'criteria',
+                                    'nested_model': 'criteria',
+                                    'nested_relation_field': 'sale_id',
+                                    'orderby': 'id asc',
+                                    'add_button_label': 'Add Criteria V2',
+                                    'ref': 'sale.view_criteria_o2m_nested',
+                                    'empty_message': 'No criteria yet. Click Add Criteria to add. V2',
+                                    'description': 'Custom criteria and specifications for this sale order',
+                                    'editable': 'bottom',
+                                }
+                            ]"
+                            domain="[('status', '=', 'draft')]"
+                            badges="['Order Lines', 'Criteria']"
+                        >
+                            <list string="Order lines" editable="bottom"
+                                help="List of sale orders for this partner"
+                                banner_info="Please at least test this one-to-many field if any related modification has been made."
+                                banner_warning="Please at least test this one-to-many field if any related modification has been made."
+                                banner_danger="Please at least test this one-to-many field if any related modification has been made."
+                                banner_success="Please at least test this one-to-many field if any related modification has been made.">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="quantity"/>
+                                <field name="price"/>
+                                <field name="subtotal"/>
+                                <field name="date"/>
+                                <field name="datetime"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+                <page string="M2M Sale IDS" name="m2m_sale_ids">
+                    <group>
+                        <field name="m2m_sale_ids">
+                            <list string="M2M Order lines">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="quantity"/>
+                                <field name="price"/>
+                                <field name="subtotal"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='age']" position="after">
+                <field name="refferal_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- menu partners (sequence) - one2many_nested themes_2 -->
+    <record id="view_partners_form_inherit_sequence" model="baseuiview">
+        <field name="name">view.partners.form.inherit.sequence</field>
+        <field name="model">partner</field>
+        <field name="inherit" ref="partners.view_partners_form" />
+        <field name="mode">primary</field>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='notes']" position="before">
+                <page string="Sales [V2]" name="sales_v2_only">
+                    <group>
+                        <!-- Version 2 - For Partners (Sequence) Menu -->
+                        <!-- Widget: one2many_nested with Tab-Based Interface (themes_2 / V2) -->
+                        <field
+                            name="sale_ids"
+                            widget="one2many_nested"
+                            themes="themes_2"
+                            add_parent_label="Add Sale V2"
+                            empty_message="No sale orders yet. Click 'Add Sale' to create one. V2"
+                            options="[
+                                {
+                                    'nested_field': 'lines',
+                                    'nested_model': 'saleorderline',
+                                    'nested_relation_field': 'sale_id',
+                                    'orderby': 'id asc',
+                                    'add_button_label': 'Add Sale Order Line V2',
+                                    'ref': 'sale.view_saleorderline_o2m_nested',
+                                    'empty_message': 'No lines yet. Click Add Sale Order Line to add. V2',
+                                    'description': 'Products and services in this sale order'
+                                }, {
+                                    'nested_field': 'criteria',
+                                    'nested_model': 'criteria',
+                                    'nested_relation_field': 'sale_id',
+                                    'orderby': 'id asc',
+                                    'add_button_label': 'Add Criteria V2',
+                                    'ref': 'sale.view_criteria_o2m_nested',
+                                    'empty_message': 'No criteria yet. Click Add Criteria to add. V2',
+                                    'description': 'Custom criteria and specifications for this sale order',
+                                    'editable': 'bottom',
+                                }
+                            ]"
+                            badges="['Order Lines', 'Criteria']"
+                            domain="[('status', '=', 'draft')]"
+                        >
+                            <list string="Order lines" editable="bottom"
+                                help="List of sale orders for this partner"
+                                banner_info="Please at least test this one-to-many field if any related modification has been made."
+                                banner_warning="Please at least test this one-to-many field if any related modification has been made."
+                                banner_danger="Please at least test this one-to-many field if any related modification has been made."
+                                banner_success="Please at least test this one-to-many field if any related modification has been made.">
+                                <field name="name" />
+                                <field name="partner_id" />
+                                <field name="quantity" />
+                                <field name="price" />
+                                <field name="subtotal" />
+                                <field name="date" />
+                                <field name="datetime" />
+                            </list>
+                        </field>
+                    </group>
+                </page>
+                <page string="M2M Sale IDS" name="m2m_sale_ids_v2">
+                    <group>
+                        <field name="m2m_sale_ids">
+                            <list string="M2M Order lines">
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="quantity"/>
+                                <field name="price"/>
+                                <field name="subtotal"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='age']" position="after">
+                <field name="refferal_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partners_list_inherit" model="baseuiview">
+        <field name="name">view.partners.list.inherit</field>
+        <field name="model">partner</field>
+        <field name="inherit" ref="partners.view_partners_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="before">
+                <field name="refferal_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</hmx>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data>
+        <record id="sale_order" model="basedecimalaccuracy">
+            <field name="name">Sale Order</field>
+            <field name="digits_amount">2</field>
+            <field name="digits_quantity">2</field>
+        </record>
+    </data>
+</hmx>

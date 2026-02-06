@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+
+        <record id="seq_sale_customer" model="basesequence">
+            <field name="name">Customer ID</field>
+            <field name="code">sale.customer</field>
+            <field name="prefix">CS-</field>
+            <field name="padding">4</field>
+            <field name="implementation">standard</field>
+            <field name="company" eval="False"/>
+        </record>
+
+    </data>
+</hmx>

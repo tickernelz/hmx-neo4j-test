@@ -1,0 +1,6 @@
+id,name,model:id,group:id,perm_read,perm_write,perm_create,perm_unlink
+access_aiagentconfig,AI Agent Config,model_aiagentconfig,,1,1,1,1
+access_aimessage,AI Message,model_aimessage,base.group_user,1,1,1,1
+access_aisession,AI Session,model_aisession,base.group_user,1,1,1,1
+access_aiknowledge,AI Knowledge,model_aiknowledge,base.group_user,1,1,1,1
+access_aiknowledgewizard,AI Knowledge Wizard,model_aiknowledgewizard,base.group_user,1,1,1,1

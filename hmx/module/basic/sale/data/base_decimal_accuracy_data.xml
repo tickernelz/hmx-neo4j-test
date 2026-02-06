@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hmx>
+    <data noupdate="1">
+        <!-- Base Decimal Accuracy -->
+        <record id="product_price" model="basedecimalaccuracy">
+            <field name="name">Product Price</field>
+            <field name="digits_amount">2</field>
+            <field name="digits_quantity">1</field>
+        </record>
+
+        <record id="discount" model="basedecimalaccuracy">
+            <field name="name">Discount</field>
+            <field name="digits_amount">12</field>
+            <field name="digits_quantity">2</field>
+        </record>
+
+        <record id="stock_weight" model="basedecimalaccuracy">
+            <field name="name">Stock Weight</field>
+            <field name="digits_amount">3</field>
+            <field name="digits_quantity">1</field>
+        </record>
+    </data>
+</hmx>

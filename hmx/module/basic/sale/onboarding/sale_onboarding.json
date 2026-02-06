@@ -1,0 +1,91 @@
+[
+    {
+        "selector": ".hx-sidebar[data_uniq=\"layout_sidebar\"]",
+        "title": "Sidebar Penjualan",
+        "content": "Ini adalah sidebar modul <b>Sales</b>. Gunakan area ini untuk memilih perusahaan, mencari menu, dan membuka bagian-bagian terkait penjualan.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"company_picker_toggle\"]",
+        "title": "Pemilih Perusahaan",
+        "content": "Klik untuk memilih perusahaan/branch aktif. Status aktif memengaruhi data yang ditampilkan di seluruh modul.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"sidebar_search_input\"]",
+        "title": "Pencarian Menu",
+        "content": "Ketik untuk menemukan menu atau fitur dengan cepat di dalam modul <b>Sales</b>. Shortcut: <kbd>Shift</kbd> + <kbd>S</kbd>.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar .hx-active-section .label",
+        "title": "Seksi Aktif",
+        "content": "Menunjukkan modul yang sedang dibuka — saat ini <b>Sales</b>.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"sidebar_section_toggle_orders\"]",
+        "title": "Bagian: Orders",
+        "content": "Kumpulan menu untuk membuat dan mengelola penawaran/sales order.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"menu_entry_sale_orders\"]",
+        "title": "Sale Orders",
+        "content": "Buka daftar Sales Order. Dari sini Anda dapat membuat SO baru atau meninjau yang sudah ada.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"sidebar_section_toggle_products\"]",
+        "title": "Bagian: Products",
+        "content": "Menu terkait produk/layanan yang dijual — kelola master data produk di sini.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-sidebar [data_uniq=\"menu_entry_products\"]",
+        "title": "Products",
+        "content": "Buka daftar Produk. Anda bisa menambah, mengubah, atau menonaktifkan item.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-powered-by-hashmicro",
+        "title": "Powered by HASHMICRO",
+        "content": "Informasi branding di bagian bawah sidebar.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-action-bar .create-button",
+        "title": "Buat Data Baru",
+        "content": "Gunakan tombol ini untuk menambahkan data baru pada modul aktif, yaitu <b>Sales</b>.",
+        "placement": "left",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-form-view .hx-form-sheet-state",
+        "title": "Daftar Status",
+        "content": "Menampilkan daftar status atau tahapan data pada modul aktif, yaitu <b>Sales</b>.",
+        "placement": "left",
+        "align": "start"
+    },
+    {
+        "selector": ".hx-form-view .form-field-value [data_uniq=\"company\"]",
+        "title": "Nama Perusahaan",
+        "content": "Daftar perusahaan yang aktif saat ini.",
+        "placement": "right",
+        "align": "start"
+    },
+    {
+        "content": "Selesai! Kamu sudah mengenal elemen utama di sidebar <b>Sales</b>. Selamat bekerja 👋",
+        "placement": "auto",
+        "align": "center"
+    }
+]

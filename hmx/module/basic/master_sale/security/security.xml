@@ -1,0 +1,16 @@
+<hmx>
+    <data>
+        <record id="sale_group_manager" model="group">
+            <field name="name">Sale Manager</field>
+        </record>
+        <record id="sale_group_self_service" model="group">
+            <field name="name">Self Service</field>
+        </record>
+        <record id="sale_group_supervisor" model="group">
+            <field name="name">Sale Supervisor</field>
+        </record>
+        <record id="sale_group_sales_person" model="group">
+            <field name="name">Sales Person</field>
+        </record>
+    </data>
+</hmx>

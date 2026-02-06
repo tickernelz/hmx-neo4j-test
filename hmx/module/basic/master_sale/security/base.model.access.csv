@@ -1,0 +1,11 @@
+id,name,model:id,group:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_customer_manager,Access Sale Customer Manager,model_basepartner,master_sale.sale_group_manager,1,1,1,1
+access_sale_customer_self_service,Access Sale Customer Self Service,model_basepartner,master_sale.sale_group_self_service,1,1,1,0
+access_sale_customer_category_manager,Access Sale Customer Categories Manager,model_salecustomercategory,master_sale.sale_group_manager,1,1,1,1
+access_sale_customer_category_self_service,Access Sale Customer Categories Self Service,model_salecustomercategory,master_sale.sale_group_self_service,1,0,0,0
+access_sale_order_manager,Access Sale Order Manager,model_saleorder,master_sale.sale_group_manager,1,1,1,1
+access_sale_order_supervisor,Access Sale Order Supervisor,model_saleorder,master_sale.sale_group_supervisor,1,1,1,1
+access_sale_order_sales_person,Access Sale Order Sales Person,model_saleorder,master_sale.sale_group_sales_person,1,1,1,1
+access_sale_order_line_manager,Access Sale Order Line Manager,model_saleorderlines,master_sale.sale_group_manager,1,1,1,1
+access_sale_order_line_supervisor,Access Sale Order Line Supervisor,model_saleorderlines,master_sale.sale_group_supervisor,1,1,1,1
+access_sale_order_line_sales_person,Access Sale Order Line Sales Person,model_saleorderlines,master_sale.sale_group_sales_person,1,1,1,1
